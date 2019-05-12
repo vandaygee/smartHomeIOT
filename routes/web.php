@@ -19,6 +19,7 @@ Route::get('/actuators/{view?}',"myController@actuator");
 Route::get('/get_json',"myController@get_Json");
 Route::post('/receive_json',"myController@receive_json");
 Route::get('/receive_json1/{data}',"myController@receive_json1");
+Route::get('/log/{page}',"myController@view_logs");
 
 Route::get('/testjson',function(){
     return "hello";

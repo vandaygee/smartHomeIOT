@@ -52,7 +52,7 @@
                     </div>
                     <div class="extra content">
                         <span class="right floated">
-                            <a href="#">View Logs</a>
+                            <a href="{{url('/log/heater')}}">View Logs</a>
                         </span>
                     </div>
                 </div>
@@ -152,7 +152,7 @@
 
             <div class="description">
                 <i class="lightbulb icon"></i>
-                A description can appear on the right
+               Heater has been turned on
             </div>
         </div>
 {{--        <div class="actions modal-background">--}}

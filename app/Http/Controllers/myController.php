@@ -59,14 +59,46 @@ class myController extends Controller
     }
 
     public function receive_json(Request $request){
-        $data = $request->json()->all();
-        $json_data = json_encode($data);
-        $path = base_path('app_data\receive.json');
-        $success=file_put_contents($path, $json_data);
+        $data_from_request = $request->json()->all();
+        $server_path = base_path('app_data\test.json');
+        $server_heater_log_file =  base_path('app_data\heaterlog.json');
+
+        $server_heater_data = file_get_contents($server_heater_log_file);
+        $server_heater_data_decode = json_decode($server_heater_data);
+        $server_heater_data_decode[] = $data_from_request["log"];
+        file_put_contents($server_heater_log_file,json_encode($server_heater_data_decode));
+
+
+        $server_json = file_get_contents($server_path);
+        $server_json_decode = json_decode($server_json);
+        $server_json_decode->heater = $data_from_request["heater"];
+
+        $json_data = json_encode($server_json_decode);
+        $success = file_put_contents($server_path, $json_data);
+
         return $success;
     }
 
     public function receive_json1($json){
+       // $data_from_request = $request->json()->all();
+//        $server_path = base_path('app_data\receive.json');
+//
+//        $server_json = file_get_contents($server_path);
+//        $server_json_decode = json_decode($server_json);
+//        $server_json_decode->heater = $data_from_request["heater"];
+
+
+
+//
+//
+//        $json_data = json_encode($server_json_decode);
+////        $path = base_path('app_data\receive.json');
+//        $success = file_put_contents($server_path, $json_data);
+//        return $success;
+
+
+
+
         $order = $json;
         $obj = json_decode($order);
         $name = $obj -> {"name"};
@@ -87,6 +119,9 @@ class myController extends Controller
         }
         $array = array("name" => $name, "food" => $food, "quantity" => $quty, "price" => $price, "status" => $status);
         echo json_encode($array);
+
+
+
     }
 
     public function save_Json(Request $request){
@@ -96,5 +131,18 @@ class myController extends Controller
         $path = base_path('app_data\test.json');
         $success=file_put_contents($path, $json_data);
         return $success;
+    }
+
+    public function view_logs($page){
+        if($page=="heater"){
+            $data = [];
+            $data["page_title"] = "Heater Logs";
+            $data_file = base_path('app_data\heaterlog.json');
+            $data_on_server = file_get_contents($data_file);
+            $data_object = json_decode($data_on_server);
+            $data["logs"] = $data_object;
+            //dd($data["logs"][13]->temp_value);
+            return view('logs',$data);
+        }
     }
 }

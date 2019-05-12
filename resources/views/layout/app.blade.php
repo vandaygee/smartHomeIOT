@@ -18,23 +18,43 @@
 </head>
 <body>
     <div class="ui container">
-        <div class="ui inverted segment">
-            <div class="ui labeled icon inverted secondary pointing pointing menu">
-                <a class="{{$page=='controllers'?'active':''}} item" href="{{url('/controllers')}}">
-                    <i class="gamepad icon"></i>
-                    Controllers
-                </a>
-                <a class="{{$page=='sensors'?'active':''}} item" href="{{url('/sensors')}}">
-                    Sensor
-                </a>
-                <a class="{{$page=='actuators'?'active':''}} item" href="{{url('/actuators')}}">
-                   Actuators
-                </a>
-                <a class="item left">
-                    Settings
-                </a>
+        @if(isset($page))
+            <div class="ui inverted segment">
+                <div class="ui labeled icon inverted secondary pointing pointing menu">
+                    <a class="{{$page=='controllers'?'active':''}} item" href="{{url('/controllers')}}">
+                        <i class="gamepad icon"></i>
+                        Controllers
+                    </a>
+                    <a class="{{$page=='sensors'?'active':''}} item" href="{{url('/sensors')}}">
+                        Sensor
+                    </a>
+                    <a class="{{$page=='actuators'?'active':''}} item" href="{{url('/actuators')}}">
+                       Actuators
+                    </a>
+                    <a class="item left">
+                        Settings
+                    </a>
+                </div>
             </div>
-        </div>
+        @else
+            <div class="ui inverted segment">
+                <div class="ui labeled icon inverted secondary pointing pointing menu">
+                    <a class="item" href="{{url('/controllers')}}">
+                        <i class="gamepad icon"></i>
+                        Controllers
+                    </a>
+                    <a class="item" href="{{url('/sensors')}}">
+                        Sensor
+                    </a>
+                    <a class=" item" href="{{url('/actuators')}}">
+                        Actuators
+                    </a>
+                    <a class="item left">
+                        Settings
+                    </a>
+                </div>
+            </div>
+        @endif
         @yield('content')
     </div>
 
