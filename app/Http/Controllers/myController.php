@@ -68,7 +68,6 @@ class myController extends Controller
         $server_heater_data_decode[] = $data_from_request["log"];
         file_put_contents($server_heater_log_file,json_encode($server_heater_data_decode));
 
-
         $server_json = file_get_contents($server_path);
         $server_json_decode = json_decode($server_json);
         $server_json_decode->heater = $data_from_request["heater"];
