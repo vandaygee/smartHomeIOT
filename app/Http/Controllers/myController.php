@@ -144,4 +144,8 @@ class myController extends Controller
             return view('logs',$data);
         }
     }
+
+    public function test_View(){
+        return "this is test page";
+    }
 }
