@@ -24,7 +24,7 @@ $('.ui.checkbox')
     .checkbox()
 ;
 
-test_receive();
+//test_receive();
 
 // $('.ui.modal')
 //     .modal('show')
@@ -39,8 +39,6 @@ $("#test").click(function() {
         .modal('show')
     ;
 });
-
-
 
 $("#temp_sp").click(function() {
     var data={};

@@ -22,6 +22,8 @@ class myController extends Controller
         $pass_data["light_max"]=$app_data->light_max;
         $pass_data["light_min"]=$app_data->light_min;
         $pass_data["page"] = "controllers";
+
+        //dd($pass_data);
         return view('iotcontroller',$pass_data);
     }
 

@@ -26,3 +26,8 @@ Route::get('/testjson',function(){
 });
 
 Route::post('/save_json',"myController@save_Json");
+
+
+
+//API Controllers
+Route::get('/api/get_controller_data',"ApiControllers@iot_controller");
