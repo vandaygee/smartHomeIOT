@@ -28,9 +28,6 @@ class ApiControllers extends Controller
     }
 
 
-
-
-
     public function get_Json(){
         $my_path = base_path('app_data\test.json');
         $strJsonFileContents = file_get_contents($my_path);
